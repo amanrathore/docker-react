@@ -1,0 +1,9 @@
+sudo: required  #super user permission required always
+services:
+    - docker #starts up the copy of the docker
+
+before-install:  #before rtests are run (series of setups are run before testing)
+    - docker build -t adsrathore/docker-react -f Dockerfile.dev .  
+    
+script:
+    - docekr run adsrathore/docker-react npm run test -- --coverage    
