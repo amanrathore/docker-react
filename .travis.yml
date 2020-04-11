@@ -7,3 +7,20 @@ before-install:  #before rtests are run (series of setups are run before testing
     
 script:
     - docker run -e CI=true adsrathore/docker-react npm run test -- --coverage    
+
+
+deploy:
+    provider: elasticbeanstalk
+    region: "us-east-2"
+    app: "Docker-react"
+    env: "DockerReact-env"
+    bucket_name: "elasticbeanstalk-us-east-2-954526503946"
+    bucket_path: "Docker-react"
+    on:
+        branch: master
+    access_key_id: $AWS_ACCESS_KEY_ID
+    secret_access_key: 
+        secure: "$AWS_SECRET_KEY"    
+
+        
+         
