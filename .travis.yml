@@ -6,4 +6,4 @@ before-install:  #before rtests are run (series of setups are run before testing
     - docker build -t adsrathore/docker-react -f Dockerfile.dev .  
     
 script:
-    - docker run adsrathore/docker-react npm run test -- --coverage    
+    - docker run -e CI=true adsrathore/docker-react npm run test -- --coverage    
